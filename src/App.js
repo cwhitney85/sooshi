@@ -1,16 +1,22 @@
-import React, { Component } from 'react'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import React, { useState } from 'react'
+import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 
+export default function App() {
+  const [count, setCount] = useState(0)
+  console.log(count)
+  const [food, setFood] = useState('Sushi')
 
-export default class App extends Component {
-  render() {
-    return (
-      <div className="container">
-        <h1>The Sooshi App</h1>
-        <Button>Click Me</Button>
-      </div>
-    )
+  function incCount() {
+    setCount(prevCount => prevCount + 1)
   }
+  return (
+    <div className="container">
+      <h1>Soooooooshi</h1>
+      <h4>{food} Ordered: {count}</h4>
+      <Button onClick={incCount}>Order Sushi</Button>
+    </div>
+  )
 }
+
 
