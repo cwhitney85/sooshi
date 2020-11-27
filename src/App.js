@@ -1,21 +1,23 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
+import User from './Sushi'
+import { UserProvider } from './SushiContext'
+
+export const UserContext = React.createContext()
 
 export default function App() {
-  const [count, setCount] = useState(0)
-  console.log(count)
-  const [food, setFood] = useState('Sushi')
+  // const [count, setCount] = useState(0)
 
-  function incCount() {
-    setCount(prevCount => prevCount + 1)
-  }
+
+  
   return (
-    <div className="container">
-      <h1>Soooooooshi</h1>
-      <h4>{food} Ordered: {count}</h4>
-      <Button onClick={incCount}>Order Sushi</Button>
-    </div>
+    <UserProvider>
+      <div className="container">
+        <h1>Soooooooshi</h1>
+        <User/>
+      </div>
+    </UserProvider>
   )
 }
 
